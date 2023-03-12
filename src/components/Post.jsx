@@ -2,28 +2,31 @@ import styles from './Post.module.css'
 import { Comment } from './Comment'
 import { Avatar } from './Avatar'
 
-export function Post(props) {
+export function Post({ author, content, publishAt }) {
+
   return (
     <div className={styles.post}>
       <header>
-        <Avatar src="https://github.com/idlucassanti.png" />
+        <Avatar src={author.avatar} />
         
         <div className={styles.authorInfos}>
-          <span>Lucas Santi</span>
-          <strong>.NET Developer</strong>
+          <span>{author.name}</span>
+          <strong>{author.role}</strong>
         </div>
-
-        <time title='12 de Março às 05:14h' dateTime='2023-03-12 05:14:00' className={styles.publishAt}>Publicado há 1h</time>
+        <time title='12 de Março às 05:14h' dateTime='2023-03-12 05:14:00' className={styles.publishAt}>{publishAt.toString()}</time>
       </header>
 
       <div className={styles.content}>
-        <p>Fala galeraa 👋</p>
-
-        <p>Acabei de subir mais um projeto no meu portifa. É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀</p>
-
-        <p><a href=''>jane.design/doctorcare</a></p>
-        
-        <p><a href=''>#novoprojeto</a>{' '}<a href=''>#nlw</a>{' '}<a href=''>#rocketseat</a></p>
+        {content.map((item, i) => {
+          switch (item.type) {
+            case 'paragraphy':
+              return <p>{item.content}</p>            
+            case 'link':
+              return <p><a href=''>{item.content}</a></p>
+            default:
+              break;
+          }
+        })}
       </div>
 
       <form>

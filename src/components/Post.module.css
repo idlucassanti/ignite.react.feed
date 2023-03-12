@@ -17,7 +17,7 @@
 .authorInfos {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
 }
 
 .authorInfos span { 
