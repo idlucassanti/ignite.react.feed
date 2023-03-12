@@ -94,7 +94,7 @@
 }
 
 .content button:hover {
-  color: var(--green-300);
+  color: var(--red-500);
 }
 
 .content > p {
