@@ -8,8 +8,16 @@
   --gray-800: #202024;
   --gray-900: #121214;
 
-  --green-500: #00875f;
+  --green-300: #8661C5;
+  --green-500: #5d438e;
 }
+
+:focus {
+  outline: transparent;
+  box-shadow: 0 0 0 2px var(--green-500);
+
+}
+
 
 * {
   margin: 0;
@@ -28,3 +36,12 @@ body, input, textarea, button {
   font-weight: 400;
   font-size: 1rem;
 }
+
+
+/* 
+#8661C5
+#5d438e
+#3b2e57
+
+
+*/

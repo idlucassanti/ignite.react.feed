@@ -61,7 +61,7 @@
   justify-content: center;
   gap: 0.75rem;
 
-  transition: .3s;
+  transition: .1s;
 }
 
 .sidebar footer a:hover {
