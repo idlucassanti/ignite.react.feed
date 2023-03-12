@@ -10,3 +10,9 @@
 
   align-items: start;
 }
+
+@media (max-width: 760px) {
+  .wrapper {
+    grid-template-columns: 1fr;
+  }
+}
