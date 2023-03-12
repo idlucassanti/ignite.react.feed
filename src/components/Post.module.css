@@ -124,3 +124,7 @@
 .post form button {
   display: none;
 }
+
+.commentList {
+  margin-top: 2rem;
+}
