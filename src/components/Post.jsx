@@ -6,6 +6,7 @@ import { format, formatDistanceToNow } from 'date-fns'
 import ptBr from 'date-fns/locale/pt-BR'
 
 export function Post({ author, content, publishAt }) {
+  const [ newCommentText, setNewCommentText ] = useState('');
   const [comments, setComments]= useState([
     {
       id: 1,
@@ -36,13 +37,11 @@ export function Post({ author, content, publishAt }) {
   const publishDate = formatDistanceToNow(publishAt, {
     locale: ptBr,
     addSuffix: true
-  });
+  });  
 
   function handleCreateNewComment(e) {
     e.preventDefault();
-
-    var newContent = e.target.comment.value;
-
+    
     var comment = {
       id: comments.length + 1,
       authorComment: {
@@ -50,13 +49,17 @@ export function Post({ author, content, publishAt }) {
         name: author.name,
       },
       publishAt: new Date(),
-      content: newContent,
+      content: newCommentText,
       like: 0
     }
 
     setComments([...comments, comment]);
 
-    e.target.comment.value = '';
+    setNewCommentText('');
+  }
+
+  function handleChangeNewCommentText() {
+    setNewCommentText(event.target.value)
   }
 
   return (
@@ -86,7 +89,12 @@ export function Post({ author, content, publishAt }) {
 
       <form onSubmit={handleCreateNewComment}>
         <strong>Deixe o seu feedback</strong>
-        <textarea name="comment" placeholder='Escreva um comentário...'></textarea>
+        <textarea 
+          name="comment" 
+          placeholder='Escreva um comentário...'
+          value={newCommentText}
+          onChange={handleChangeNewCommentText}
+        ></textarea>
         <button type='submit'>Publicar</button>
       </form>
 
